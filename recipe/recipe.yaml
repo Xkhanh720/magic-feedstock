@@ -30,15 +30,13 @@ requirements:
       then:
         - libglu
         - libgl-devel
-        - libx11 
+        - xorg-libx11 
     - cairo
     - freetype
-    - libgl-devel
     - readline
     - tk
     - xorg-libice
     - xorg-libsm
-    - xorg-libx11
     - xorg-libxext
     - xorg-libxmu
     - xorg-libxrender
@@ -46,12 +44,10 @@ requirements:
   run:
     - cairo
     - freetype
-    - libgl-devel
     - readline
     - tk
     - xorg-libice
     - xorg-libsm
-    - xorg-libx11
     - xorg-libxext
     - xorg-libxmu
     - xorg-libxrender
