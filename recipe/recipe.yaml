@@ -1,0 +1,74 @@
+context:
+  version: "8.3.678"
+
+package:
+  name: magic
+  version: ${{ version }}
+
+source:
+  url: https://github.com/RTimothyEdwards/magic/archive/refs/tags/${{ version }}.tar.gz
+  sha256: 3f47b68d3ca2c0ef1cdf18916581a5ac3a529ecc83c6ad0d7cd8e1800d2c3614
+
+build:
+  number: 1
+  script:
+    - if: unix
+      then: export CFLAGS="${CFLAGS} -std=gnu17 -Wno-error=implicit-function-declaration -Wno-implicit-int -Wno-error=incompatible-pointer-types -Wno-error=int-conversion"
+
+    - ./configure --prefix="${PREFIX}" --with-tk="${PREFIX}/lib"
+    - make -j1
+    - make install
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - make
+    - pkg-config
+  host:
+    - libglu
+    - cairo
+    - freetype
+    - libgl-devel
+    - readline
+    - tk
+    - xorg-libice
+    - xorg-libsm
+    - xorg-libx11
+    - xorg-libxext
+    - xorg-libxmu
+    - xorg-libxrender
+    - zlib
+  run:
+    - cairo
+    - freetype
+    - libgl-devel
+    - readline
+    - tk
+    - xorg-libice
+    - xorg-libsm
+    - xorg-libx11
+    - xorg-libxext
+    - xorg-libxmu
+    - xorg-libxrender
+    - zlib
+
+tests:
+  - script:
+      - magic -dnull -noconsole
+
+about:
+  homepage: https://opencircuitdesign.com/magic/
+  repository: https://github.com/RTimothyEdwards/magic
+  summary: Magic VLSI layout tool
+  description: 
+    Magic is an open-source VLSI layout tool supporting circuit layout,
+    design-rule checking, extraction, and multiple technology files.
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - proppy
+    - curtisma
+    - Xkhanh720
+    - duyhieubui
