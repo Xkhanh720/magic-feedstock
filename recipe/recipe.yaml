@@ -27,10 +27,7 @@ requirements:
     - pkg-config
   host:
     - if: linux
-      then:
-        - libglu
-        - libgl
-        - libx11
+      then: libglu
     - cairo
     - freetype
     - libgl-devel
