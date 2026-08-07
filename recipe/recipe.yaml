@@ -26,7 +26,11 @@ requirements:
     - make
     - pkg-config
   host:
-    - libglu
+    - if: linux
+      then:
+        - libglu
+        - libgl
+        - libx11
     - cairo
     - freetype
     - libgl-devel
