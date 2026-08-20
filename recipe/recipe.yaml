@@ -10,7 +10,8 @@ source:
 
 build:
   number: 0
-  skip: not target_platform.startswith("linux") 
+  skip: 
+    - not target_platform.startswith("linux") 
   script:
     - export CFLAGS="$CFLAGS -D__NO_STRING_INLINES -DCPFunction='char**' -DCPPFunction='rl_completion_func_t' -std=gnu17 -fpermissive -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration -Wno-implicit-int -Wno-error=incompatible-pointer-types -Wno-error=int-conversion -Wno-compare-distinct-pointer-types -Wno-error=compare-distinct-pointer-types"
     - export LIBRARY_PATH="$PREFIX/lib:$LIBRARY_PATH"
