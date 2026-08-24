@@ -48,7 +48,9 @@ requirements:
     - xorg-libxext
     - xorg-libxmu
     - zlib
-
+tests:
+  - script:
+      - command -v magic  
 about:
   homepage: https://opencircuitdesign.com/magic/
   repository: https://github.com/RTimothyEdwards/magic
